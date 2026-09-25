@@ -1,12 +1,9 @@
 {
-  "name": "ts-cli-template",
+  "name": "glyphalyze",
   "version": "1.0.0",
-  "description": "1DV610 - TypeScript CLI Template / Boilerplate",
+  "description": "Simple text analyzer",
   "type": "module",
   "main": "dist/app.js",
-  "bin": {
-    "ts-cli-template": "dist/app.js"
-  },
   "engines": {
     "node": ">=24.12.0"
   },
@@ -25,7 +22,7 @@
   },
   "contributors": [
     "1dv610 Organization",
-    "YOUR NAME <YOUR EMAIL>"
+    "Robin Helander <rehswe@gmail.com>"
   ],
   "license": "Unlicense",
   "private": false,
