@@ -7,5 +7,5 @@
  * @returns The amount of characters found.
  */
 export function countCharacters(text: string): number {
-  return text.split('').length;
+  return text.split('').length
 }
