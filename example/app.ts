@@ -6,18 +6,13 @@ import { avgWordLength, countCharacters, countWords, readingTime, wordFrequency 
 
 import fs from 'node:fs/promises'
 import { join } from 'node:path'
-
-async function loadFile() {
-  try {
-    const data = await fs.readFile(join(import.meta.dirname, 'test.txt'), { encoding: 'utf8' })
-    return data
-  } catch (err) {
-    console.error(err)
-    process.exit(1)
-  }
+let text = ''
+try {
+  text = await fs.readFile(join(import.meta.dirname, 'test.txt'), { encoding: 'utf8' })
+} catch (err) {
+  console.error(err)
+  process.exit(1)
 }
-
-const text = await loadFile()
 
 console.log('Text:', text)
 console.log()
