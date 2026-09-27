@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { avgWordLength, countCharacters, countWords, wordFrequency } from './app.js'
+import { avgWordLength, countCharacters, countWords, wordFrequency, readingTime } from './app.js'
 
 describe('countWords()', () => {
   it('It should return the correct amount of words found in a text string', () => {
@@ -31,5 +31,15 @@ describe('wordFrequency()', () => {
       hej: 3,
       hallå: 1,
     })
+  })
+})
+
+describe('readingTime()', () => {
+  it('It should return the correct estimated reading time in seconds based on users words per minute input)', () => {
+    const result = readingTime(
+      'I will write a very short text here cause im a slow reader, 23 words per minute btw, dont wanna flex or anything',
+      23
+    )
+    expect(result).toBe(60)
   })
 })

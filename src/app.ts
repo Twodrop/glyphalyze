@@ -26,7 +26,7 @@ export function countWords(text: string): number {
  * Calculates the average word length.
  *
  * @example
- * avgWordLength('Hello sir, how are you today?') // Returns 3.8
+ * avgWordLength('Hello, how are you today?') // Returns 3.8
  * @param text - The text to calculate on.
  * @returns The average word length.
  */
@@ -86,4 +86,18 @@ export function wordFrequency(text: string): Record<string, number> {
     }
   }
   return wordFrequency
+}
+
+/**
+ * Returns the expected reading time in seconds.
+ *
+ * @example
+ * readingTime('Hello hello world', 3) // Returns 60
+ * @param text - The text to get the reading time from.
+ * @param wordsPerMinute - How fast the user reads.
+ * @returns Reading time in seconds.
+ */
+export function readingTime(text: string, wordsPerMinute: number): number {
+  const wordCount = countWords(text)
+  return (wordCount / wordsPerMinute) * 60
 }
