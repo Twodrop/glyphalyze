@@ -31,15 +31,7 @@ export function countWords(text: string): number {
  * @returns The average word length.
  */
 export function avgWordLength(text: string): number {
-  //We remove the following characters.
-  const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
-  let filteredText = text
-
-  for (let index = 0; index < filter.length; index++) {
-    filteredText = filteredText.replaceAll(filter[index], '')
-  }
-
-  const splitText = filteredText.split(' ')
+  const splitText = filterWords(text)
   let total = 0
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index]
@@ -65,16 +57,11 @@ export function sentenceCount(text: string): number {
  * @returns An object with a key word each word with a value for each count.
  */
 export function wordFrequency(text: string): Record<string, number> {
-  const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
-  let filteredText = text
 
-  for (let index = 0; index < filter.length; index++) {
-    filteredText = filteredText.replaceAll(filter[index], '')
-  }
 
   const wordFrequency: Record<string, number> = {}
 
-  const splitText = filteredText.split(' ')
+  const splitText = filterWords(text)
 
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index].toLowerCase()
@@ -100,4 +87,25 @@ export function wordFrequency(text: string): Record<string, number> {
 export function readingTime(text: string, wordsPerMinute: number): number {
   const wordCount = countWords(text)
   return (wordCount / wordsPerMinute) * 60
+}
+
+
+/**
+ * Private helper function.
+ * Removes punctuation from a text and splits it into words.
+ *
+ * @example
+ * filterWords('Hello, how are you?') // Returns ['Hello', 'how', 'are', 'you']
+ * @param text - The text to filter.
+ * @returns The words in the text, without punctuation.
+ */
+function filterWords(text: string): string[] {
+  const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
+  let filteredText = text
+
+  for (let index = 0; index < filter.length; index++) {
+    filteredText = filteredText.replaceAll(filter[index], '')
+  }
+
+  return filteredText.split(' ')
 }
