@@ -55,3 +55,35 @@ export function sentenceCount(text: string): number {
   
 }
 */
+
+/**
+ * Returns an object represting the frequency of each word.
+ *
+ * @example
+ * avgWordLength('Hello hello world') // Returns {hello:2, world:1}
+ * @param text - The text to get the frequency from.
+ * @returns An object with a key word each word with a value for each count.
+ */
+export function wordFrequency(text: string): Record<string, number> {
+  const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
+  let filteredText = text
+
+  for (let index = 0; index < filter.length; index++) {
+    filteredText = filteredText.replaceAll(filter[index], '')
+  }
+
+  const wordFrequency: Record<string, number> = {}
+
+  const splitText = filteredText.split(' ')
+
+  for (let index = 0; index < splitText.length; index++) {
+    const word = splitText[index].toLowerCase()
+
+    if (wordFrequency[word]) {
+      wordFrequency[word] = wordFrequency[word] + 1
+    } else {
+      wordFrequency[word] = 1
+    }
+  }
+  return wordFrequency
+}

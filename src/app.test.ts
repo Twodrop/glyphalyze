@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { avgWordLength, countCharacters, countWords } from './app.js'
+import { avgWordLength, countCharacters, countWords, wordFrequency } from './app.js'
 
 describe('countWords()', () => {
   it('It should return the correct amount of words found in a text string', () => {
@@ -21,5 +21,15 @@ describe('avgWordLength()', () => {
       'This text will test the average word length! Hopefully it works? I am adding some weird stuff to test;'
     )
     expect(result).toBe(81 / 19)
+  })
+})
+
+describe('wordFrequency()', () => {
+  it('Returns an object with each word as a key and its count as value', () => {
+    const result = wordFrequency('Hej hej hej! Hallå')
+    expect(result).toEqual({
+      hej: 3,
+      hallå: 1,
+    })
   })
 })
