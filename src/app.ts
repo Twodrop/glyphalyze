@@ -60,7 +60,7 @@ export function sentenceCount(text: string): number {
  * Returns an object represting the frequency of each word.
  *
  * @example
- * avgWordLength('Hello hello world') // Returns {hello:2, world:1}
+ * wordFrequency('Hello hello world') // Returns {hello:2, world:1}
  * @param text - The text to get the frequency from.
  * @returns An object with a key word each word with a value for each count.
  */
