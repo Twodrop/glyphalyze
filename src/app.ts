@@ -31,7 +31,7 @@ export function countWords(text: string): number {
  * @returns The average word length.
  */
 export function avgWordLength(text: string): number {
-  const splitText = filterWords(text)
+  const splitText = cleanUpText(text)
   let total = 0
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index]
@@ -59,7 +59,7 @@ export function sentenceCount(text: string): number {
 export function wordFrequency(text: string): Record<string, number> {
   const wordFrequency: Record<string, number> = {}
 
-  const splitText = filterWords(text)
+  const splitText = cleanUpText(text)
 
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index].toLowerCase()
@@ -89,20 +89,26 @@ export function readingTime(text: string, wordsPerMinute: number): number {
 
 /**
  * Private helper function.
- * Removes punctuation from a text and splits it into words.
+ * Cleans up a text and splits it into words.
  *
  * @example
- * filterWords('Hello, how are you?') // Returns ['Hello', 'how', 'are', 'you']
- * @param text - The text to filter.
- * @returns The words in the text, without punctuation.
+ * cleanUpText('Hello, how\n are you?') // Returns ['Hello', 'how', 'are', 'you']
+ * @param text - The text to clean up.
+ * @returns The words in the text, cleaned up.
  */
-function filterWords(text: string): string[] {
+function cleanUpText(text: string): string[] {
   const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
-  let filteredText = text
+  let cleanedUpText = text
 
   for (let index = 0; index < filter.length; index++) {
-    filteredText = filteredText.replaceAll(filter[index], '')
+    cleanedUpText = cleanedUpText.replaceAll(filter[index], '')
   }
 
-  return filteredText.split(' ')
+  const replaceWithWhitespace = ['\r\n', '\n']
+
+  for (let index = 0; index < replaceWithWhitespace.length; index++) {
+    cleanedUpText = cleanedUpText.replaceAll(replaceWithWhitespace[index], ' ')
+  }
+
+  return cleanedUpText.split(' ')
 }
