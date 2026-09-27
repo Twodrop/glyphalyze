@@ -4,21 +4,25 @@
   "description": "Simple text analyzer",
   "type": "module",
   "main": "dist/app.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=24.12.0"
   },
   "scripts": {
     "start": "tsx src/app.ts",
+    "example": "tsx example/app.ts",
     "build": "tsc -p tsconfig.build.json",
     "prepare": "npm run build",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
     "test:match": "vitest run -t",
-    "lint": "eslint ./src --cache",
-    "lint:fix": "eslint ./src --cache --fix",
-    "format": "prettier --write ./src",
-    "format:check": "prettier ./src --check"
+    "lint": "eslint ./src ./example --cache",
+    "lint:fix": "eslint ./src ./example --cache --fix",
+    "format": "prettier --write ./src ./example",
+    "format:check": "prettier ./src ./example --check"
   },
   "contributors": [
     "1dv610 Organization",
