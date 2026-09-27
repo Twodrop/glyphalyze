@@ -22,16 +22,24 @@ export function countWords(text: string): number {
   return text.split(' ').length
 }
 
+/**
+ * Calculates the average word length.
+ *
+ * @example
+ * avgWordLength('Hello sir, how are you today?') // Returns 3.8
+ * @param text - The text to calculate on.
+ * @returns The average word length.
+ */
 export function avgWordLength(text: string): number {
   //We remove the following characters.
-  let filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
+  const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
   let filteredText = text
 
   for (let index = 0; index < filter.length; index++) {
     filteredText = filteredText.replaceAll(filter[index], '')
   }
 
-  let splitText = filteredText.split(' ')
+  const splitText = filteredText.split(' ')
   let total = 0
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index]
