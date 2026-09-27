@@ -57,8 +57,6 @@ export function sentenceCount(text: string): number {
  * @returns An object with a key word each word with a value for each count.
  */
 export function wordFrequency(text: string): Record<string, number> {
-
-
   const wordFrequency: Record<string, number> = {}
 
   const splitText = filterWords(text)
@@ -88,7 +86,6 @@ export function readingTime(text: string, wordsPerMinute: number): number {
   const wordCount = countWords(text)
   return (wordCount / wordsPerMinute) * 60
 }
-
 
 /**
  * Private helper function.
