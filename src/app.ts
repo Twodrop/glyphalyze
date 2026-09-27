@@ -57,7 +57,7 @@ export function sentenceCount(text: string): number {
  * @returns An object with a key word each word with a value for each count.
  */
 export function wordFrequency(text: string): Record<string, number> {
-  const wordFrequency: Record<string, number> = {}
+  const wordFrequency: Record<string, number> = Object.create(null)
 
   const splitText = cleanUpText(text)
 
