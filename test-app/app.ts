@@ -6,6 +6,7 @@ import { avgWordLength, countCharacters, countWords, readingTime, wordFrequency,
 
 import fs from 'node:fs/promises'
 import { join } from 'node:path'
+import { getSentences } from '../src/tokenize.js'
 let text = ''
 try {
   text = await fs.readFile(join(import.meta.dirname, 'test.txt'), { encoding: 'utf8' })
@@ -17,8 +18,9 @@ try {
 console.log('Text:', text)
 console.log()
 console.log('Characters:', countCharacters(text))
-console.log('Scentences:', countSentences('Hello sir! How are you today?'))
+console.log('Sentences:', countSentences(text))
 console.log('Words:', countWords(text))
 console.log('Average word length:', avgWordLength(text))
 console.log('Word frequency:', wordFrequency(text))
 console.log('Reading time (200 wpm):', readingTime(text, 200))
+console.log(getSentences('Hello sir! How are you today?'))

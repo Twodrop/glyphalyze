@@ -42,7 +42,7 @@ describe('wordFrequency()', () => {
 })
 
 describe('readingTime()', () => {
-  it('It should return the correct estimated reading time in seconds based on users words per minute input)', () => {
+  it('It should return the correct estimated reading time in seconds based on users words per minute input', () => {
     const result = readingTime(
       'I will write a very short text here cause im a slow reader, 23 words per minute btw, dont wanna flex or anything',
       23

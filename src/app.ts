@@ -33,9 +33,9 @@ export function countWords(text: string): number {
  * Counts the amount of sentences in a text.
  *
  * @example
- * countWords('Hello sir! How are you today?') // Returns 2
+ * countSentences('Hello sir! How are you today?') // Returns 2
  * @param text - The text to count.
- * @returns The amount of scentences found.
+ * @returns The amount of sentences found.
  */
 export function countSentences(text: string): number {
   return getSentences(text).length
@@ -47,27 +47,31 @@ export function countSentences(text: string): number {
  * @example
  * avgWordLength('Hello, how are you today?') // Returns 3.8
  * @param text - The text to calculate on.
- * @returns The average word length.
+ * @returns The average word length, or 0 if the text has no words.
  */
 export function avgWordLength(text: string): number {
   const splitText = getWords(text)
+  if (splitText.length === 0) {
+    return 0
+  }
+
   let total = 0
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index]
 
-    total = total + word.split('').length
+    total = total + getCharacters(word).length
   }
 
   return total / splitText.length
 }
 
 /**
- * Returns an object represting the frequency of each word.
+ * Returns an object representing the frequency of each word.
  *
  * @example
  * wordFrequency('Hello hello world') // Returns {hello:2, world:1}
  * @param text - The text to get the frequency from.
- * @returns An object with a key word each word with a value for each count.
+ * @returns An object with each word as a key and its count as the value.
  */
 export function wordFrequency(text: string): Record<string, number> {
   const wordFrequency: Record<string, number> = Object.create(null)
