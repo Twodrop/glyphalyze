@@ -1,3 +1,5 @@
+import { getWords, getCharacters, getSentences } from './tokenize.js'
+
 /**
  * Counts the amount of characters in a text.
  *
@@ -7,7 +9,7 @@
  * @returns The amount of characters found.
  */
 export function countCharacters(text: string): number {
-  return text.split('').length
+  return getCharacters(text).length
 }
 
 /**
@@ -19,7 +21,7 @@ export function countCharacters(text: string): number {
  * @returns The amount of words found.
  */
 export function countWords(text: string): number {
-  return text.split(' ').length
+  return getWords(text).length
 }
 
 /**
@@ -31,7 +33,7 @@ export function countWords(text: string): number {
  * @returns The average word length.
  */
 export function avgWordLength(text: string): number {
-  const splitText = cleanUpText(text)
+  const splitText = getWords(text)
   let total = 0
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index]
@@ -41,12 +43,6 @@ export function avgWordLength(text: string): number {
 
   return total / splitText.length
 }
-
-/*
-export function sentenceCount(text: string): number {
-  
-}
-*/
 
 /**
  * Returns an object represting the frequency of each word.
@@ -59,7 +55,7 @@ export function sentenceCount(text: string): number {
 export function wordFrequency(text: string): Record<string, number> {
   const wordFrequency: Record<string, number> = Object.create(null)
 
-  const splitText = cleanUpText(text)
+  const splitText = getWords(text)
 
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index].toLowerCase()
@@ -85,30 +81,4 @@ export function wordFrequency(text: string): Record<string, number> {
 export function readingTime(text: string, wordsPerMinute: number): number {
   const wordCount = countWords(text)
   return (wordCount / wordsPerMinute) * 60
-}
-
-/**
- * Private helper function.
- * Cleans up a text and splits it into words.
- *
- * @example
- * cleanUpText('Hello, how\n are you?') // Returns ['Hello', 'how', 'are', 'you']
- * @param text - The text to clean up.
- * @returns The words in the text, cleaned up.
- */
-function cleanUpText(text: string): string[] {
-  const filter = [',', '.', '?', '!', "'", ':', ';', '"', '(', ')']
-  let cleanedUpText = text
-
-  for (let index = 0; index < filter.length; index++) {
-    cleanedUpText = cleanedUpText.replaceAll(filter[index], '')
-  }
-
-  const replaceWithWhitespace = ['\r\n', '\n']
-
-  for (let index = 0; index < replaceWithWhitespace.length; index++) {
-    cleanedUpText = cleanedUpText.replaceAll(replaceWithWhitespace[index], ' ')
-  }
-
-  return cleanedUpText.split(' ')
 }
