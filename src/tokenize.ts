@@ -51,6 +51,8 @@ export function getCharacters(text: string): string[] {
 /**
  * Splits a text into sentences.
  *
+ * TODO: Does not deal with line breaks very well.
+ *
  * @example
  * getSentences('Hello sir! How are you today?')
  * // Returns ['Hello sir! ', 'How are you today?']

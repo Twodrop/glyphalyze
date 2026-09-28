@@ -66,6 +66,30 @@ export function avgWordLength(text: string): number {
 }
 
 /**
+ * Calculates the average sentence length,
+ * based on word length.
+ *
+ * @example
+ * @param text - The text to calculate on.
+ * @returns The average sentence length, or 0 if the text has no words.
+ */
+export function avgSentenceLength(text: string): number {
+  const sentences = getSentences(text)
+  if (sentences.length === 0) {
+    return 0
+  }
+
+  let total = 0
+  for (let index = 0; index < sentences.length; index++) {
+    const sentence = sentences[index]
+
+    total = total + getWords(sentence).length
+  }
+
+  return total / sentences.length
+}
+
+/**
  * Returns an object representing the frequency of each word.
  *
  * @example
@@ -74,20 +98,20 @@ export function avgWordLength(text: string): number {
  * @returns An object with each word as a key and its count as the value.
  */
 export function wordFrequency(text: string): Record<string, number> {
-  const wordFrequency: Record<string, number> = Object.create(null)
+  const frequencies: Record<string, number> = Object.create(null)
 
   const splitText = getWords(text)
 
   for (let index = 0; index < splitText.length; index++) {
     const word = splitText[index].toLowerCase()
 
-    if (wordFrequency[word]) {
-      wordFrequency[word] = wordFrequency[word] + 1
+    if (frequencies[word]) {
+      frequencies[word] = frequencies[word] + 1
     } else {
-      wordFrequency[word] = 1
+      frequencies[word] = 1
     }
   }
-  return wordFrequency
+  return frequencies
 }
 
 /**
