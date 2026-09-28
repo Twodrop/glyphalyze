@@ -1,5 +1,4 @@
 import { Tokenizer } from './Tokenizer.js'
-import { TextCounter } from './TextCounter.js'
 
 /**
  *
@@ -7,14 +6,14 @@ import { TextCounter } from './TextCounter.js'
 export class TextStatistics {
   readonly #text: string
   readonly #tokenizer = new Tokenizer()
-  readonly #counter: TextCounter
 
   /**
+   * Consturctor for TextStatistics class.
    *
+   * @param text Text to be calculated on.
    */
   constructor(text: string) {
     this.#text = text
-    this.#counter = new TextCounter(text)
   }
 
   /**
@@ -22,7 +21,6 @@ export class TextStatistics {
    *
    * @example
    * avgWordLength('Hello, how are you today?') // Returns 3.8
-   * @param text - The text to calculate on.
    * @returns The average word length, or 0 if the text has no words.
    */
   avgWordLength(): number {
@@ -46,7 +44,6 @@ export class TextStatistics {
    * based on word length.
    *
    * @example
-   * @param text - The text to calculate on.
    * @returns The average sentence length, or 0 if the text has no words.
    */
   avgSentenceLength(): number {
@@ -70,12 +67,11 @@ export class TextStatistics {
    *
    * @example
    * readingTime('Hello hello world', 3) // Returns 60
-   * @param text - The text to get the reading time from.
    * @param wordsPerMinute - How fast the user reads.
    * @returns Reading time in seconds.
    */
   readingTime(wordsPerMinute: number): number {
-    const wordCount = this.#counter(this.#text)
+    const wordCount = this.#tokenizer.getWords(this.#text).length
     return (wordCount / wordsPerMinute) * 60
   }
 }

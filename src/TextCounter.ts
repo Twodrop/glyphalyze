@@ -8,7 +8,9 @@ export class TextCounter {
   readonly #tokenizer = new Tokenizer()
 
   /**
+   * Consturctor for TextCounter class.
    *
+   * @param text The text that will be counted on.
    */
   constructor(text: string) {
     this.#text = text
@@ -52,7 +54,6 @@ export class TextCounter {
    *
    * @example
    * wordFrequency('Hello hello world') // Returns {hello:2, world:1}
-   * @param text - The text to get the frequency from.
    * @returns An object with each word as a key and its count as the value.
    */
   wordFrequency(): Record<string, number> {
