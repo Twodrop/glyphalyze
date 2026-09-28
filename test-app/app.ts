@@ -1,5 +1,5 @@
 /**
- * Example app demonstrating the glyphalyze text analysis functions.
+ * Test app demonstrating the glyphalyze text analysis functions.
  */
 
 import { avgWordLength, countCharacters, countWords, readingTime, wordFrequency, countSentences } from '../src/app.js'

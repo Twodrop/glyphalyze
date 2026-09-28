@@ -12,17 +12,17 @@
   },
   "scripts": {
     "start": "tsx src/app.ts",
-    "example": "tsx example/app.ts",
+    "test-app": "tsx test-app/app.ts",
     "build": "tsc -p tsconfig.build.json",
     "prepare": "npm run build",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
     "test:match": "vitest run -t",
-    "lint": "eslint ./src ./example --cache",
-    "lint:fix": "eslint ./src ./example --cache --fix",
-    "format": "prettier --write ./src ./example",
-    "format:check": "prettier ./src ./example --check"
+    "lint": "eslint ./src ./test-app --cache",
+    "lint:fix": "eslint ./src ./test-app --cache --fix",
+    "format": "prettier --write ./src ./test-app",
+    "format:check": "prettier ./src ./test-app --check"
   },
   "contributors": [
     "1dv610 Organization",
