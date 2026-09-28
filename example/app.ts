@@ -2,7 +2,7 @@
  * Example app demonstrating the glyphalyze text analysis functions.
  */
 
-import { avgWordLength, countCharacters, countWords, readingTime, wordFrequency } from '../src/app.js'
+import { avgWordLength, countCharacters, countWords, readingTime, wordFrequency, countSentences } from '../src/app.js'
 
 import fs from 'node:fs/promises'
 import { join } from 'node:path'
@@ -17,6 +17,7 @@ try {
 console.log('Text:', text)
 console.log()
 console.log('Characters:', countCharacters(text))
+console.log('Scentences:', countSentences('Hello sir! How are you today?'))
 console.log('Words:', countWords(text))
 console.log('Average word length:', avgWordLength(text))
 console.log('Word frequency:', wordFrequency(text))
