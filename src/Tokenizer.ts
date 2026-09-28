@@ -1,5 +1,10 @@
 /**
- *
+ * @file Defines the Tokenizer class.
+ * @author Robin Helander <rehswe@gmail.com>
+ */
+
+/**
+ * Splits text into words, characters and sentences using Intl.Segmenter.
  */
 export class Tokenizer {
   readonly #wordSegmenter = new Intl.Segmenter('en', { granularity: 'word' })
@@ -10,7 +15,7 @@ export class Tokenizer {
    * Cleans up a text and splits it into words.
    *
    * @example
-   * getWords('Hello, how\n are you?') // Returns ['Hello', 'how', 'are', 'you']
+   * new Tokenizer().getWords('Hello, how\n are you?') // Returns ['Hello', 'how', 'are', 'you']
    * @param text - The text to clean up.
    * @returns The words in the text, cleaned up.
    */
@@ -28,12 +33,12 @@ export class Tokenizer {
   }
 
   /**
-   * Uses Intl.Segmenter so that emojis are counted
-   * as 1, instead of its Unicode code.
+   * Splits a text into characters.
+   * Emojis count as one character, instead of one per Unicode code unit.
    * Includes line breaks and spaces.
    *
    * @example
-   * getCharacters('Hi 👍🏽') // Returns ['H', 'i', ' ', '👍🏽']
+   * new Tokenizer().getCharacters('Hi 👍🏽') // Returns ['H', 'i', ' ', '👍🏽']
    * @param text - The text to clean up.
    * @returns The characters in the text, cleaned up.
    */
@@ -53,7 +58,7 @@ export class Tokenizer {
    * TODO: Does not deal with line breaks very well.
    *
    * @example
-   * getSentences('Hello sir! How are you today?')
+   * new Tokenizer().getSentences('Hello sir! How are you today?')
    * // Returns ['Hello sir! ', 'How are you today?']
    * @param text - The text to split up.
    * @returns The sentences in the text, split up.

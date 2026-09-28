@@ -1,3 +1,8 @@
+/**
+ * @file Defines the TextStatistics class.
+ * @author Robin Helander <rehswe@gmail.com>
+ */
+
 import { Tokenizer } from './Tokenizer.js'
 
 /**
@@ -20,7 +25,7 @@ export class TextStatistics {
    * Calculates the average word length.
    *
    * @example
-   * avgWordLength('Hello, how are you today?') // Returns 3.8
+   * new TextStatistics('Hello, how are you today?').avgWordLength() // Returns 3.8
    * @returns The average word length, or 0 if the text has no words.
    */
   avgWordLength(): number {
@@ -44,6 +49,7 @@ export class TextStatistics {
    * based on word length.
    *
    * @example
+   * new TextStatistics('Hello sir! How are you today?').avgSentenceLength() // Returns 3
    * @returns The average sentence length, or 0 if the text has no words.
    */
   avgSentenceLength(): number {
@@ -66,7 +72,7 @@ export class TextStatistics {
    * Returns the expected reading time in seconds.
    *
    * @example
-   * readingTime('Hello hello world', 3) // Returns 60
+   * new TextStatistics('Hello hello world').readingTime(3) // Returns 60
    * @param wordsPerMinute - How fast the user reads.
    * @returns Reading time in seconds.
    */

@@ -1,7 +1,13 @@
+/**
+ * @file Defines the TextCounter class.
+ * @author Robin Helander <rehswe@gmail.com>
+ */
+
 import { Tokenizer } from './Tokenizer.js'
 
 /**
- *
+ * Counts the characters, words and sentences in a text,
+ * and how many times each word occurs.
  */
 export class TextCounter {
   readonly #text: string
@@ -20,7 +26,7 @@ export class TextCounter {
    * Counts the amount of characters in a text.
    *
    * @example
-   * countCharacters('Six Seven') // Returns 9
+   * new TextCounter('Six Seven').countCharacters() // Returns 9
    * @returns The amount of characters found.
    */
   countCharacters(): number {
@@ -31,7 +37,7 @@ export class TextCounter {
    * Counts the amount of words in a text.
    *
    * @example
-   * countWords('Hello sir, how are you today?') // Returns 6
+   * new TextCounter('Hello sir, how are you today?').countWords() // Returns 6
    * @returns The amount of words found.
    */
   countWords(): number {
@@ -42,7 +48,7 @@ export class TextCounter {
    * Counts the amount of sentences in a text.
    *
    * @example
-   * countSentences('Hello sir! How are you today?') // Returns 2
+   * new TextCounter('Hello sir! How are you today?').countSentences() // Returns 2
    * @returns The amount of sentences found.
    */
   countSentences(): number {
@@ -53,7 +59,7 @@ export class TextCounter {
    * Returns an object representing the frequency of each word.
    *
    * @example
-   * wordFrequency('Hello hello world') // Returns {hello:2, world:1}
+   * new TextCounter('Hello hello world').wordFrequency() // Returns {hello:2, world:1}
    * @returns An object with each word as a key and its count as the value.
    */
   wordFrequency(): Record<string, number> {

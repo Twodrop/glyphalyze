@@ -6,13 +6,3 @@
 export { Tokenizer } from './Tokenizer.js'
 export { TextCounter } from './TextCounter.js'
 export { TextStatistics } from './TextStatistics.js'
-
-
-
-
-
-
-
-
-
-
