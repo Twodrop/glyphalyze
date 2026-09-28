@@ -1,9 +1,9 @@
-const wordSegmenter = new Intl.Segmenter("en", { granularity: "word" });
-const charSegmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
-
+const wordSegmenter = new Intl.Segmenter('en', { granularity: 'word' })
+const charSegmenter = new Intl.Segmenter('en', { granularity: 'grapheme' })
+const sentenceCount = new Intl.Segmenter('en', { granularity: 'sentence' })
 
 /**
- * Private helper function.
+ * Helper function.
  * Cleans up a text and splits it into words.
  *
  * @example
@@ -14,7 +14,7 @@ const charSegmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
 export function getWords(text: string): string[] {
   const words: string[] = []
   const segmentedWords = wordSegmenter.segment(text)
- 
+
   // Only adds element deemd "word like" by the segmenter.
   for (const element of segmentedWords) {
     if (element.isWordLike) {
@@ -24,13 +24,14 @@ export function getWords(text: string): string[] {
   return words
 }
 
-
 /**
- * Private helper function.
- * Cleans up a text and splits it into characters.
+ * Helper function.
+ * Uses Intl.Segmenter so that emojis are counted
+ * as 1, instead of its unicode code.
+ * Includes linebreaks and spaces.
  *
  * @example
- * getCharacters('Hello, how\n are you?') // Returns ['Hello', 'how', 'are', 'you']
+ * getCharacters('Hi 👍🏽') // Returns ['H', 'i', ' ', '👍🏽']
  * @param text - The text to clean up.
  * @returns The characters in the text, cleaned up.
  */
@@ -39,7 +40,28 @@ export function getCharacters(text: string): string[] {
   const segmentedCharacters = charSegmenter.segment(text)
 
   for (const element of segmentedCharacters) {
-      characters.push(element.segment)
+    characters.push(element.segment)
   }
   return characters
+}
+
+/**
+ * Helper function.
+ * Uses Intl.Segmenter so that emojis are counted
+ * as 1, instead of its unicode code.
+ * Includes linebreaks and spaces.
+ *
+ * @example
+ * getCharacters('Hi 👍🏽') // Returns ['H', 'i', ' ', '👍🏽']
+ * @param text - The text to clean up.
+ * @returns The characters in the text, cleaned up.
+ */
+export function getSentences(text: string): string[] {
+  const sentences: string[] = []
+  const segmentedSentences = sentenceCount.segment(text)
+
+  for (const element of segmentedSentences) {
+    sentences.push(element.segment)
+  }
+  return sentences
 }

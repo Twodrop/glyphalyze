@@ -25,6 +25,18 @@ export function countWords(text: string): number {
 }
 
 /**
+ * Counts the amount of sentences in a text.
+ *
+ * @example
+ * countWords('Hello sir! How are you today?') // Returns 2
+ * @param text - The text to count.
+ * @returns The amount of scentences found.
+ */
+export function countSentences(text: string): number {
+  return getSentences(text).length
+}
+
+/**
  * Calculates the average word length.
  *
  * @example

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { avgWordLength, countCharacters, countWords, wordFrequency, readingTime } from './app.js'
+import { avgWordLength, countCharacters, countWords, countSentences, wordFrequency, readingTime } from './app.js'
 
 describe('countWords()', () => {
   it('It should return the correct amount of words found in a text string', () => {
@@ -12,6 +12,13 @@ describe('countCharacters()', () => {
   it('It should return the correct amount of characters found in a text string', () => {
     const result = countCharacters('Six Seven')
     expect(result).toBe(9)
+  })
+})
+
+describe('countSentences()', () => {
+  it('It should return the correct amount of sentences found in a text string', () => {
+    const result = countSentences('Hello my name is Robin. What is your name?')
+    expect(result).toBe(2)
   })
 })
 
