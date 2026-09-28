@@ -1,9 +1,13 @@
+/**
+ * @file Utility functions for text segmenting.
+ * @author Robin Helander <rehswe@gmail.com>
+ */
+
 const wordSegmenter = new Intl.Segmenter('en', { granularity: 'word' })
 const charSegmenter = new Intl.Segmenter('en', { granularity: 'grapheme' })
 const sentenceCount = new Intl.Segmenter('en', { granularity: 'sentence' })
 
 /**
- * Helper function.
  * Cleans up a text and splits it into words.
  *
  * @example
@@ -25,7 +29,6 @@ export function getWords(text: string): string[] {
 }
 
 /**
- * Helper function.
  * Uses Intl.Segmenter so that emojis are counted
  * as 1, instead of its unicode code.
  * Includes linebreaks and spaces.
@@ -46,7 +49,7 @@ export function getCharacters(text: string): string[] {
 }
 
 /**
- * Helper function.
+ * Private Helper function.
  * Uses Intl.Segmenter so that emojis are counted
  * as 1, instead of its unicode code.
  * Includes linebreaks and spaces.

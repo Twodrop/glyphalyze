@@ -1,3 +1,8 @@
+/**
+ * @file Glyphalyze functions, used to analyze text in various ways.
+ * @author Robin Helander <rehswe@gmail.com>
+ */
+
 import { getWords, getCharacters, getSentences } from './tokenize.js'
 
 /**
