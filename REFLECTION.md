@@ -19,11 +19,11 @@
 
 | Namn | Förklaring | Reflektion och regler från Clean Code |
 | ---- | ---------- | -------------------------------------- |
-|      |            |                                         |
-|      |            |                                         |
-|      |            |                                         |
-|      |            |                                         |
-|      |            |                                         |
+| `TextCounter` |            |                                         |
+| `TextStatistics.avgWordLength(): number` |            |                                         |
+| `TextStatistics.readingTime(wordsPerMinute: number): number` |            |                                         |
+| `TextCounter.wordFrequency(): Record<string, number>` |            |                                         |
+| `Tokenizer.getCharacters(text: string): string[]` |            |                                         |
 
 *Upptäckte du någon brist i din egen namngivning när du läste kapitlet om namngivning? Höll du med
 om alla "reglerna", eller finns det någon du ifrågasätter?*
@@ -39,11 +39,11 @@ Svar:
 
 | Metodnamn | Länk eller kod | Antal rader (ej ws) | Reflektion (regler som följs/bryts, föreslagna förändringar) |
 | --------- | --------------- | -------------------- | ------------------------------------------------------------ |
-|           |                 |                       |                                                              |
-|           |                 |                       |                                                              |
-|           |                 |                       |                                                              |
-|           |                 |                       |                                                              |
-|           |                 |                       |                                                              |
+| `TextCounter.wordFrequency(): Record<string, number>` | [TextCounter.ts#L65](https://github.com/Twodrop/glyphalyze/blob/main/src/TextCounter.ts#L65) | 11 |                                                              |
+| `TextStatistics.avgWordLength(): number` | [TextStatistics.ts#L32](https://github.com/Twodrop/glyphalyze/blob/main/src/TextStatistics.ts#L32) | 10 |                                                              |
+| `TextStatistics.avgSentenceLength(): number` | [TextStatistics.ts#L56](https://github.com/Twodrop/glyphalyze/blob/main/src/TextStatistics.ts#L56) | 10 |                                                              |
+| `Tokenizer.getWords(text: string): string[]` | [Tokenizer.ts#L22](https://github.com/Twodrop/glyphalyze/blob/main/src/Tokenizer.ts#L22) | 9 |                                                              |
+| `Tokenizer.getSentences(text: string): string[]` | [Tokenizer.ts#L66](https://github.com/Twodrop/glyphalyze/blob/main/src/Tokenizer.ts#L66) | 6 |                                                              |
 
 *Upptäckte du någon brist i hur du tidigare skrivit funktioner/metoder när du läste kapitlet om
 funktioner? Höll du med om alla "reglerna", eller finns det någon du ifrågasätter?*

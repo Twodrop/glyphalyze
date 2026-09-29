@@ -33,16 +33,6 @@ npm run test:run
 
 ## Test Results
 
-**Example** (shows what a filled-in row can look like — remove this example table before
-submitting):
-
-| What was tested                                                        | How it was tested                                                                                                       | Result                                                                       |
-| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `Jpeg.load(path)` returns a `Picture` instance for a valid image file. | Automated unit test (Vitest): loaded `test-image.jpg` and checked that the return value had `getHeight()`/`getWidth()` methods. | ✅ Passed.                                                                    |
-| `Picture.getPixelAt(x, y)` with coordinates outside the image.         | Manual test via the Test-App's interface: entered a coordinate pair larger than the image's width/height and observed the output. | ❌ Didn't throw an error initially — fixed, now throws a clear exception. |
-
-**Your test results:**
-
 | What was tested | How it was tested | Result |
 | --------------- | ------------------ | ------- |
 | `TextCounter.countWords()` | passed the text `'Hello! Not really sure what i should write here but i guess this will do.'` and checked that it returned `15`. |✅ Passed.|
