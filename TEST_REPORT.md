@@ -3,13 +3,33 @@
 
 ## Summary
 
-*Briefly describe how you tested your module, and why you chose that approach — clearly enough
-that someone else could carry out the same tests. What was hardest to test, and why?*
+I have chosen to use unit testing using Vitest. To me this was the most obvious solution since the functions are pure: they have no side effects and always return the same output for the same input. That means each test only needs a fixed input and an expected value calculated by hand, without any setup or mocking, and the tests can run in any order. This gives me the benefit of easily seeing if something breaks during development. I would testing each function was more or less equally hard, other than for obejcts i had to use `toEqual(...)` rather than `toBe(...)`
 
-*If you used a testing framework, you may link to its generated report or include screenshots of
-the test run here.*
+### Run tests
 
-Answer:
+The tests can be found `src/` *.test.ts
+
+1. Clone repo
+```bash
+git clone https://github.com/Twodrop/glyphalyze.git
+cd glyphalyze
+```
+
+2. Install:
+
+```bash
+npm install
+```
+
+3. Run the tests:
+
+```bash
+npm run test:run
+```
+
+### Output
+
+![Vitest output](Vitest_Test_Report.png)
 
 ## Test Results
 
@@ -25,8 +45,13 @@ submitting):
 
 | What was tested | How it was tested | Result |
 | ---------------- | ------------------ | ------- |
-|                   |                    |         |
-|                   |                    |         |
-|                   |                    |         |
-|                   |                    |         |
-|                   |                    |         |
+| `TextCounter.countWords()` |                    |         |
+| `TextCounter.countCharacters()` |                    |         |
+| `TextCounter.countSentences()` |                    |         |
+| `TextCounter.wordFrequency()` |                    |         |
+| `TextStatistics.avgWordLength()` |                    |         |
+| `TextStatistics.avgSentenceLength()` |                    |         |
+| `TextStatistics.readingTime()` |                    |         |
+| `Tokenizer.getWords()` |                    |         |
+| `Tokenizer.getCharacters()` |                    |         |
+| `Tokenizer.getSentences()` |                    |         |
