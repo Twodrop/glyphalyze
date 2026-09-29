@@ -2,15 +2,7 @@
  * Test app demonstrating the glyphalyze text analysis functions.
  */
 
-import {
-  avgWordLength,
-  countCharacters,
-  countWords,
-  readingTime,
-  wordFrequency,
-  countSentences,
-  avgSentenceLength,
-} from '../src/app.js'
+import { TextCounter, TextStatistics } from '../src/app.js'
 
 import fs from 'node:fs/promises'
 import { join } from 'node:path'
@@ -23,12 +15,15 @@ try {
   process.exit(1)
 }
 
+const counter = new TextCounter(text)
+const statistics = new TextStatistics(text)
+
 console.log('Text:', text)
 console.log()
-console.log('Characters:', countCharacters(text))
-console.log('Sentences:', countSentences(text))
-console.log('Words:', countWords(text))
-console.log('Average word length:', avgWordLength(text))
-console.log('Average sentence length:', avgSentenceLength(text))
-console.log('Word frequency:', wordFrequency(text))
-console.log('Reading time (200 wpm):', readingTime(text, 200))
+console.log('Characters:', counter.countCharacters())
+console.log('Sentences:', counter.countSentences())
+console.log('Words:', counter.countWords())
+console.log('Average word length:', statistics.avgWordLength())
+console.log('Average sentence length:', statistics.avgSentenceLength())
+console.log('Word frequency:', counter.wordFrequency())
+console.log('Reading time (200 wpm):', statistics.readingTime(200))
