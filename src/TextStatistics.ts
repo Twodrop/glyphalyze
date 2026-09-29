@@ -6,14 +6,15 @@
 import { Tokenizer } from './Tokenizer.js'
 
 /**
- *
+ * Calculates the average word and sentence length in a text,
+ * and how long it takes to read.
  */
 export class TextStatistics {
   readonly #text: string
   readonly #tokenizer = new Tokenizer()
 
   /**
-   * Consturctor for TextStatistics class.
+   * Constructor for TextStatistics class.
    *
    * @param text Text to be calculated on.
    */

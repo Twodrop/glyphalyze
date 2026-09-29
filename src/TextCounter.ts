@@ -14,7 +14,7 @@ export class TextCounter {
   readonly #tokenizer = new Tokenizer()
 
   /**
-   * Consturctor for TextCounter class.
+   * Constructor for TextCounter class.
    *
    * @param text The text that will be counted on.
    */
