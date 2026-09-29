@@ -3,7 +3,7 @@
 
 ## Summary
 
-I have chosen to use unit testing using Vitest. To me this was the most obvious solution since the functions are pure: they have no side effects and always return the same output for the same input. That means each test only needs a fixed input and an expected value calculated by hand, without any setup or mocking, and the tests can run in any order. This gives me the benefit of easily seeing if something breaks during development. I would testing each function was more or less equally hard, other than for obejcts i had to use `toEqual(...)` rather than `toBe(...)`
+I have chosen to use unit testing using Vitest. To me this was the most obvious solution since the functions are pure: they have no side effects and always return the same output for the same input. That means each test only needs a fixed input and an expected value calculated by hand, without any setup or mocking, and the tests can run in any order. This gives me the benefit of easily seeing if something breaks during development. I would say testing each function was more or less equally hard, other than for obejcts i had to use `toEqual(...)` rather than `toBe(...)`
 
 ### Run tests
 
@@ -44,14 +44,14 @@ submitting):
 **Your test results:**
 
 | What was tested | How it was tested | Result |
-| ---------------- | ------------------ | ------- |
-| `TextCounter.countWords()` |                    |         |
-| `TextCounter.countCharacters()` |                    |         |
-| `TextCounter.countSentences()` |                    |         |
-| `TextCounter.wordFrequency()` |                    |         |
-| `TextStatistics.avgWordLength()` |                    |         |
-| `TextStatistics.avgSentenceLength()` |                    |         |
-| `TextStatistics.readingTime()` |                    |         |
-| `Tokenizer.getWords()` |                    |         |
-| `Tokenizer.getCharacters()` |                    |         |
-| `Tokenizer.getSentences()` |                    |         |
+| --------------- | ------------------ | ------- |
+| `TextCounter.countWords()` | passed the text `'Hello! Not really sure what i should write here but i guess this will do.'` and checked that it returned `15`. |✅ Passed.|
+| `TextCounter.countCharacters()` | passed the text `'Six Seven'` and checked that it returned `9`, so the space counts as a character. |✅ Passed.|
+| `TextCounter.countSentences()` | passed the text `'Hello my name is Robin. What is your name?'` and checked that it returned `2`. |✅ Passed.|
+| `TextCounter.wordFrequency()` | passed the text `'Hej hej hej! Hallå'` and used `toEqual` to check that it returned `{ hej: 3, hallå: 1 }`. This covers case-insensitivity, punctuation and the letter `å`. |✅ Passed.|
+| `TextStatistics.avgWordLength()` | passed a 19-word text containing `!`, `?` and `;` and checked that it returned `81 / 19`, which I calculated by hand. |✅ Passed.|
+| `TextStatistics.avgSentenceLength()` | passed three sentences ending in `!`, `?` and `.` (20 words in total) and checked that it returned `20 / 3`. |✅ Passed.|
+| `TextStatistics.readingTime()` | passed a 23-word text with a reading speed of `23` words per minute and checked that it returned `60` seconds. |✅ Passed.|
+| `Tokenizer.getWords()` | passed the text `'Hello, how are you? I am fine!'` and used `toEqual` to check that it returned `['Hello', 'how', 'are', 'you', 'I', 'am', 'fine']`, with the punctuation removed. |✅ Passed.|
+| `Tokenizer.getCharacters()` | passed the text `'Hi 👍🏽'` and used `toEqual` to check that it returned `['H', 'i', ' ', '👍🏽']`, so the emoji with its skin-tone modifier counts as one character. |✅ Passed.|
+| `Tokenizer.getSentences()` | passed the text `'Hello my name is Robin. What is your name?'` and used `toEqual` to check that it returned `['Hello my name is Robin. ', 'What is your name?']`. |✅ Passed.|
