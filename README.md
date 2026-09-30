@@ -94,7 +94,7 @@ Lower-level class used by the classes above. Use it if you need the words, chara
 
 ## Known limitations
 
-- A single line break inside a sentence splits it into two sentences. This affects hard-wrapped text, such as Project Gutenberg books.
+- A single line break inside a sentence splits it into two sentences. This can have a big impact on for example a book.
 - Abbreviations such as `Mr.` end a sentence.
 - `readingTime()` does not validate its input. `0` returns `Infinity` and a negative number returns a negative time.
 
