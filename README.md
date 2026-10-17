@@ -95,8 +95,7 @@ Lower-level class used by the classes above. Use it if you need the words, chara
 
 ## Known limitations
 
-- A single line break inside a sentence splits it into two sentences. This can have a big impact on for example a book.
-- Abbreviations such as `Mr.` end a sentence.
+- Only common abbreviations (`Mr.`, `Mrs.`, `Ms.`, `Dr.`, `Prof.`, `Rev.`, `Capt.`, `Gen.`, `Lt.`, `Col.`, `Sgt.`, `e.g.` and `i.e.`) are recognized. Others, such as `Inc.`, may still end a sentence when followed by a capital letter. A sentence that really does end with one of the recognized abbreviations is merged with the next.
 - The deprecated `readingTime()` does not validate its input. `0` returns `Infinity` and a negative number returns a negative time. Use `readingTimeInSeconds()`, which throws a `RangeError` instead.
 
 ## Development

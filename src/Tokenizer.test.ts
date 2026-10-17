@@ -41,4 +41,22 @@ describe('getSentences()', () => {
     const result = tokenizer.getSentences('A heading\n\nSome text\n \nMore text')
     expect(result).toEqual(['A heading\n\n', 'Some text\n \n', 'More text'])
   })
+
+  it('It should not end a sentence at an abbreviation', () => {
+    const tokenizer = new Tokenizer()
+    const result = tokenizer.getSentences('I met Mr. Smith and Dr. Jones. Big cities, e.g. Paris, are loud.')
+    expect(result).toEqual(['I met Mr. Smith and Dr. Jones. ', 'Big cities, e.g. Paris, are loud.'])
+  })
+
+  it('It should not end a sentence at an abbreviation followed by a single line break', () => {
+    const tokenizer = new Tokenizer()
+    const result = tokenizer.getSentences('Hello Mr.\nSmith. How are you?')
+    expect(result).toEqual(['Hello Mr.\nSmith. ', 'How are you?'])
+  })
+
+  it('It should still end a sentence at an empty line after an abbreviation', () => {
+    const tokenizer = new Tokenizer()
+    const result = tokenizer.getSentences('Hello Mr.\n\nNext part')
+    expect(result).toEqual(['Hello Mr.\n\n', 'Next part'])
+  })
 })

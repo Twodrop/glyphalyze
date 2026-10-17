@@ -29,6 +29,12 @@ describe('countSentences()', () => {
     const result = counter.countSentences()
     expect(result).toBe(2)
   })
+
+  it('It should not count an abbreviation as the end of a sentence', () => {
+    const counter = new TextCounter('Hello Mr. Smith. How are you?')
+    const result = counter.countSentences()
+    expect(result).toBe(2)
+  })
 })
 
 describe('wordFrequency()', () => {
