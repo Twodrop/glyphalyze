@@ -72,12 +72,31 @@ export class TextStatistics {
   /**
    * Returns the expected reading time in seconds.
    *
+   * @deprecated Use {@link TextStatistics.readingTimeInSeconds} instead.
    * @example
    * new TextStatistics('Hello hello world').readingTime(3) // Returns 60
    * @param wordsPerMinute - How fast the user reads.
    * @returns Reading time in seconds.
    */
   readingTime(wordsPerMinute: number): number {
+    const wordCount = this.#tokenizer.getWords(this.#text).length
+    return (wordCount / wordsPerMinute) * 60
+  }
+
+  /**
+   * Returns the expected reading time in seconds.
+   *
+   * @example
+   * new TextStatistics('Hello hello world').readingTimeInSeconds(3) // Returns 60
+   * @param wordsPerMinute - How fast the user reads. Must be a finite number greater than 0.
+   * @returns Reading time in seconds.
+   * @throws {RangeError} If wordsPerMinute is not a finite number greater than 0.
+   */
+  readingTimeInSeconds(wordsPerMinute: number): number {
+    if (!Number.isFinite(wordsPerMinute) || wordsPerMinute <= 0) {
+      throw new RangeError('wordsPerMinute must be a finite number greater than 0.')
+    }
+
     const wordCount = this.#tokenizer.getWords(this.#text).length
     return (wordCount / wordsPerMinute) * 60
   }

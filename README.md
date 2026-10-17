@@ -50,7 +50,7 @@ counter.wordFrequency() // { this: 1, is: 1, a: 1, very: 1, ... }
 const statistics = new TextStatistics(text)
 statistics.avgWordLength() // 4.5
 statistics.avgSentenceLength() // 6
-statistics.readingTime(200) // 3.6 (seconds at 200 words per minute)
+statistics.readingTimeInSeconds(200) // 3.6 (seconds at 200 words per minute)
 ```
 
 If your project uses CommonJS, `require` works too:
@@ -76,11 +76,12 @@ Create one with `new TextCounter(text)`.
 
 Create one with `new TextStatistics(text)`.
 
-| Method                        | Returns  | Description                                                          |
-| ----------------------------- | -------- | -------------------------------------------------------------------- |
-| `avgWordLength()`             | `number` | Average number of characters per word. `0` if there are no words.    |
-| `avgSentenceLength()`         | `number` | Average number of words per sentence. `0` if there are no sentences. |
-| `readingTime(wordsPerMinute)` | `number` | Estimated reading time **in seconds** at the given reading speed.    |
+| Method                                 | Returns  | Description                                                                                                                         |
+| -------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `avgWordLength()`                      | `number` | Average number of characters per word. `0` if there are no words.                                                                   |
+| `avgSentenceLength()`                  | `number` | Average number of words per sentence. `0` if there are no sentences.                                                                |
+| `readingTimeInSeconds(wordsPerMinute)` | `number` | Estimated reading time in seconds at the given reading speed. Throws a `RangeError` if `wordsPerMinute` is not a finite number > 0. |
+| `readingTime(wordsPerMinute)`          | `number` | **Deprecated.** Use `readingTimeInSeconds()` instead. Same result, but does not validate its input.                                 |
 
 ### `Tokenizer`
 
@@ -96,7 +97,7 @@ Lower-level class used by the classes above. Use it if you need the words, chara
 
 - A single line break inside a sentence splits it into two sentences. This can have a big impact on for example a book.
 - Abbreviations such as `Mr.` end a sentence.
-- `readingTime()` does not validate its input. `0` returns `Infinity` and a negative number returns a negative time.
+- The deprecated `readingTime()` does not validate its input. `0` returns `Infinity` and a negative number returns a negative time. Use `readingTimeInSeconds()`, which throws a `RangeError` instead.
 
 ## Development
 
