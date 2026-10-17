@@ -23,6 +23,12 @@ describe('countSentences()', () => {
     const result = counter.countSentences()
     expect(result).toBe(2)
   })
+
+  it('It should not count a single line break as the end of a sentence', () => {
+    const counter = new TextCounter('Hello my name\nis Robin. What is\nyour name?')
+    const result = counter.countSentences()
+    expect(result).toBe(2)
+  })
 })
 
 describe('wordFrequency()', () => {
