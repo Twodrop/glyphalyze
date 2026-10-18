@@ -79,6 +79,13 @@ export class TextCounter {
     return frequencies
   }
 
+  /**
+   * Returns a list of the most common words in the text.
+   *
+   * @param count The amount of words you want returned.
+   * @param excludedWords Words you dont want counted.
+   * @returns An array holding the top words and their frequency.
+   */
   mostFrequentWords(count: number, excludedWords: string[]): { word: string; count: number }[] {
     if (!Number.isInteger(count) || count <= 0) {
       throw new RangeError('count must be an integer greater than 0.')
