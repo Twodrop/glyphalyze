@@ -47,3 +47,31 @@ describe('wordFrequency()', () => {
     })
   })
 })
+
+describe('mostFrequentWords()', () => {
+  it('It should return the most frequent words sorted from most to least frequent', () => {
+    const counter = new TextCounter('Cat dog cat bird. Dog cat fish!')
+    const result = counter.mostFrequentWords(2, [])
+    expect(result).toEqual([
+      { word: 'cat', count: 3 },
+      { word: 'dog', count: 2 },
+    ])
+  })
+
+  it('It should not return excluded words, regardless of case', () => {
+    const counter = new TextCounter('The cat and the dog and the bird')
+    const result = counter.mostFrequentWords(2, ['THE', 'And'])
+    expect(result).toEqual([
+      { word: 'bird', count: 1 },
+      { word: 'cat', count: 1 },
+    ])
+  })
+
+  it('It should throw a RangeError if count is not an integer greater than 0', () => {
+    const counter = new TextCounter('Hello hello world')
+    expect(() => counter.mostFrequentWords(0, [])).toThrow(RangeError)
+    expect(() => counter.mostFrequentWords(-5, [])).toThrow(RangeError)
+    expect(() => counter.mostFrequentWords(1.5, [])).toThrow(RangeError)
+    expect(() => counter.mostFrequentWords(NaN, [])).toThrow(RangeError)
+  })
+})

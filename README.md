@@ -46,6 +46,7 @@ counter.countCharacters() // 67
 counter.countWords() // 12
 counter.countSentences() // 2
 counter.wordFrequency() // { this: 1, is: 1, a: 1, very: 1, ... }
+counter.mostFrequentWords(2, ['a']) // [{ word: 'basic', count: 1 }, { word: 'features', count: 1 }]
 
 const statistics = new TextStatistics(text)
 statistics.avgWordLength() // 4.5
@@ -65,12 +66,13 @@ const { TextCounter, TextStatistics } = require('glyphalyze')
 
 Create one with `new TextCounter(text)`.
 
-| Method              | Returns                  | Description                                                                       |
-| ------------------- | ------------------------ | --------------------------------------------------------------------------------- |
-| `countCharacters()` | `number`                 | Number of characters, including spaces and line breaks. Each emoji counts as one. |
-| `countWords()`      | `number`                 | Number of words. Punctuation is ignored.                                          |
-| `countSentences()`  | `number`                 | Number of sentences.                                                              |
-| `wordFrequency()`   | `Record<string, number>` | Each word in lowercase, with the number of times it occurs.                       |
+| Method                                    | Returns                             | Description                                                                                                                                                                                                                                         |
+| ----------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `countCharacters()`                       | `number`                            | Number of characters, including spaces and line breaks. Each emoji counts as one.                                                                                                                                                                   |
+| `countWords()`                            | `number`                            | Number of words. Punctuation is ignored.                                                                                                                                                                                                            |
+| `countSentences()`                        | `number`                            | Number of sentences.                                                                                                                                                                                                                                |
+| `wordFrequency()`                         | `Record<string, number>`            | Each word in lowercase, with the number of times it occurs.                                                                                                                                                                                         |
+| `mostFrequentWords(count, excludedWords)` | `{ word: string; count: number }[]` | The `count` most frequent words in lowercase, from most to least frequent. Words with the same count are sorted alphabetically. Words in `excludedWords` are left out (not case-sensitive). Throws a `RangeError` if `count` is not an integer > 0. |
 
 ### `TextStatistics`
 
